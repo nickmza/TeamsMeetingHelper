@@ -9,6 +9,11 @@ const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const createMeetingDiv = document.getElementById("createMeetingDiv");
 
+const startDate = document.getElementById("startDate");
+const startTime = document.getElementById("startTime");
+const subject = document.getElementById("subject");
+const duration = document.getElementById("duration");
+
 function showWelcomeMessage(account) {
 
     // Reconfiguring DOM elements

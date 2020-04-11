@@ -66,11 +66,27 @@ function createMeeting() {
       getTokenPopup(tokenRequest)
         .then(response => {
 
+          var meetingDateTime = new Date(startDate.value + ' ' + startTime.value)
+
+          var duration = document.querySelector('input[name="duration"]:checked').value
+          if(duration === ""){
+            duration = "15";
+          }
+
+          var time = meetingDateTime.getTime();
+          time = time + (parseInt(duration)*60*1000);
+          var meetingEnd = new Date(time);
+
+          var subjectVal = subject.value;
+          if(subjectVal === ""){
+            subjectVal = "New Teams Meeting";
+          }
+
           var createMeetingRequest =
           {
-            "startDateTime":"2020-07-12T14:30:34.2444915-07:00",
-            "endDateTime":"2020-07-12T15:00:34.2464912-07:00",
-            "subject":"User Token Meeting"
+            "startDateTime" : meetingDateTime.toISOString(),
+            "endDateTime" : meetingEnd.toISOString(),
+            "subject" : subjectVal
           }         
     
           callMSGraphPost(graphConfig.graphMeetingEndpoint, response.accessToken, updateUI,createMeetingRequest);
