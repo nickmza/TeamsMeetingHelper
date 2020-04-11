@@ -36,10 +36,12 @@ function updateUI(data, endpoint) {
     profileDiv.appendChild(email);
     profileDiv.appendChild(phone);
     profileDiv.appendChild(address);
+
+    createMeetingDiv.classList.remove('d-none');
     
   } else if (endpoint == graphConfig.graphMeetingEndpoint){
     alert('So far...');
-    createMeetingDiv.classList.remove('d-none');
+    
   }
   else if (endpoint === graphConfig.graphMailEndpoint) {
       if (data.value.length < 1) {
