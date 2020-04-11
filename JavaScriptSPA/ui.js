@@ -23,6 +23,13 @@ function showWelcomeMessage(account) {
     signOutButton.classList.remove('d-none');
 
     seeProfile()
+    setDefaults() 
+}
+
+function setDefaults(){
+  var now = new Date();
+  startDate.value = now.toISOString().split('T')[0]
+  startTime.value = now.getHours() + ':' + now.getMinutes();
 }
 
 function updateUI(data, endpoint) {
