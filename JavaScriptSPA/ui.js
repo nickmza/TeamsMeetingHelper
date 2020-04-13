@@ -14,6 +14,8 @@ const startTime = document.getElementById("startTime");
 const subject = document.getElementById("subject");
 const duration = document.getElementById("duration");
 
+const results = document.getElementById("resultsDiv");
+
 function showWelcomeMessage(account) {
 
     // Reconfiguring DOM elements
@@ -52,7 +54,21 @@ function updateUI(data, endpoint) {
     createMeetingDiv.classList.remove('d-none');
     
   } else if (endpoint == graphConfig.graphMeetingEndpoint){
-    alert('So far...');
+
+    const resultsCard = document.getElementById("resultsCard");
+    const meetingLink = document.createElement('a');
+    meetingLink.setAttribute("href", data.joinWebUrl);
+    meetingLink.innerText = "Teams Meeting";
+    resultsCard.appendChild(meetingLink);
+
+    /*
+    var linkHtml = decodeURIComponent(joinInformation.content.split(",")[1]);
+    const linkContent =document.createElement('div');
+    linkContent.innerHTML = linkHtml;
+    results.appendChild(linkContent);
+    */
+
+    results.classList.remove('d-none');
     
   }
   else if (endpoint === graphConfig.graphMailEndpoint) {
